@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.camtel_healthCare_war_1.0PU" transaction-type="JTA">
+    <jta-data-source>oradbsystem</jta-data-source>
+    <class>com.camtel.healthcare.entities.Antecedent</class>
+    <class>com.camtel.healthcare.entities.Planification</class>
+    <class>com.camtel.healthcare.entities.Pompier</class>
+    <class>com.camtel.healthcare.entities.Traitement</class>
+    <class>com.camtel.healthcare.entities.Biometrie</class>
+    <class>com.camtel.healthcare.entities.Patient</class>
+    <class>com.camtel.healthcare.entities.ForumHealthcare</class>
+    <class>com.camtel.healthcare.entities.Commentaire</class>
+    <class>com.camtel.healthcare.entities.ContactService</class>
+    <class>com.camtel.healthcare.entities.DossierMedical</class>
+    <class>com.camtel.healthcare.entities.Consultation</class>
+    <class>com.camtel.healthcare.entities.Courrier</class>
+    <class>com.camtel.healthcare.entities.Examen</class>
+    <class>com.camtel.healthcare.entities.Ordonnance</class>
+    <class>com.camtel.healthcare.entities.Vaccination</class>
+    <class>com.camtel.healthcare.entities.ConseilHealth</class>
+    <class>com.camtel.healthcare.entities.Urgentiste</class>
+    <class>com.camtel.healthcare.entities.Docteur</class>
+    <class>com.camtel.healthcare.entities.EmailHealthcare</class>
+    <class>com.camtel.healthcare.entities.FilDiscussion</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+</persistence>

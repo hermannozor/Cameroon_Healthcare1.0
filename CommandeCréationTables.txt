@@ -1,0 +1,39 @@
+  //Sauvegarder et récupérer un fichier dans la base de donnée oracle.
+// CREATE TABLE t1 (c1 INT PRIMARY KEY NOT NULL, c2 BLOB (5M)); 
+  
+PreparedStatement pstmt = conn.prepareStatement ("INSERT INTO VALEURS T1 (,)?");
+pstmt.setInt (1, 100);
+Déposer fBlob = nouveau  fichier  ("image1.gif");
+FileInputStream est = nouvelle  FileInputStream (fBlob);
+pstmt.setBinaryStream (2, est, (int) fBlob.length ());
+pstmt.execute ();
+...
+  
+Récupération d'un BLOB
+  
+// CREATE TABLE t1 (c1 INT PRIMARY KEY NOT NULL, c2 BLOB (5M)); 
+  
+Déclaration stmt = conn.createStatement (); 
+Rs = ResultSet stmt.executeQuery ("SELECT * FROM t1");
+tout (rs.next ()) {
+int  val1 = rs.getInt (1);
+InputStream val2 = rs.getBinaryStream (2);
+... 
+} Rs.close ();
+
+	//  Création d'une séquence d'une colonne
+
+
+create sequence SEQUENCE_PATIENT minvalue 100000 start with 100001 increment by 1 cache 10;
+
+    <!--   <p:submenu label="Vos conseils de santé" >
+            <p:menuitem value="Créer un conseil" outcome="comingSoon.xhtml"  ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Consulter un conseil" outcome="comingSoon.xhtml"  ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les conseils" outcome="comingSoon.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Supprimer un conseil" outcome="comingSoon.xhtml"  ajax="false" icon="ui-icon-document"/>
+        
+        
+        </p:submenu> -->
+   
+
+ 

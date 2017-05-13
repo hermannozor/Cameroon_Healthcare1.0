@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+    
+    <p:layoutUnit position="west" size="200">
+            
+            <h:form>
+    <p:growl autoUpdate="true"/>
+ 
+     <p:panelMenu style="width:100%; font-size: 12px">
+        <p:submenu label="Gérer le dossier médical">
+            <p:menuitem value="Consulter un dossier" outcome="viewMedicalDoc.xhtml" icon="ui-icon-disk" />    
+        </p:submenu>
+        <p:submenu label="Gérer les évènements">
+            
+            <p:menuitem value="lister les consultations" outcome="eventConsultations.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les examens" outcome="eventExam.xhtml" ajax="false" icon="ui-icon-document"/>
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Gérer votre compte utilisateur" >
+        <p:menuitem value="Éditer le compte" outcome="editFireProfile.xhtml" ajax="false" icon="ui-icon-document"/>
+        <p:menuitem value="Consulter le compte" outcome="listFireProfile.xhtml"  ajax="false" icon="ui-icon-document"/>
+         
+        </p:submenu>
+        
+        <p:submenu label="Déconnexion" >
+    
+            <p:menuitem value="Déconnectez-vous" outcome="quitFireSession.xhtml"  ajax="false" icon="ui-icon-document"/>
+        </p:submenu>
+        
+      
+        
+    </p:panelMenu>
+</h:form>
+         
+        </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                  <h:form id="consultationDetails">
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+
+    </p:menubar>
+    </div>
+                        <br/>
+            
+                        <div align="center" >
+                           
+                           <p:panel style="width: 90%;height: 80%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue"> Différentes Consultations du Patient </p:outputLabel> 
+                                <p:dataTable id="singleConsultation"  liveResize="true"  style="font-size: 12px" var="consultation"
+                                             value="#{sessionControl.checkPatientConsultation()}"  selectionMode="single" 
+                                             selection="#{sessionControl.selectConsultation}" rowKey="#{consultation.idConsul}"
+                                             widgetVar="consultationTable" emptyMessage="Aucune information trouvée."
+                                             filteredValue="#{sessionControl.filteredConsultations}">
+    
+    <f:facet name="header">
+            <p:outputPanel style="height: 20px">
+                <h:outputText value="" />
+    
+            </p:outputPanel>
+    </f:facet>
+ 
+    <p:column filterBy="#{consultation.dateConsult}"  style="font-size: 14px;width: 12%" headerText="Date">
+        <h:outputText value="#{consultation.dateConsult}" />
+    </p:column>
+ 
+    <p:column filterBy="#{consultation.acteConsult}" style="font-size: 14px;width: 12%" headerText="Acte">
+        <h:outputText value="#{consultation.acteConsult}" />
+    </p:column>
+ 
+    <p:column filterBy="#{consultation.motifConsult}" style="font-size: 14px;width: 12%" headerText="Motif">
+        <h:outputText value="#{consultation.motifConsult}" />
+    </p:column>
+ 
+    <p:column filterBy="#{consultation.tensionConsult}" style="font-size: 14px;width: 12%" headerText="T.A">
+        <h:outputText value="#{consultation.tensionConsult}" />
+    </p:column>
+ 
+    <p:column filterBy="#{consultation.poulsConsult}" style="font-size: 14px;width: 12%" headerText="Pouls">
+        <h:outputText value="#{consultation.poulsConsult}" />
+    </p:column>  
+    <p:column  style="font-size: 14px" headerText="Observation">
+        <h:outputText style="text-align: justify;font-size: 14px" value="#{consultation.observConsult}" />
+    </p:column>
+ 
+     <f:facet name="footer">
+         <p:commandButton process="singleConsultation"  update=":consultationDetails:consultDetail" icon="ui-icon-search" value="Ajouter un conseil" oncomplete="PF('consultDialog').show()" />
+     </f:facet>                        
+</p:dataTable>
+    
+                                <p:dialog header="Informations de la consultations" widgetVar="consultDialog" modal="false" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="consultDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty sessionControl.selectConsultation}" columnClasses="label,value">
+               
+
+                <h:outputText style="font-size: 12px" value="Date" />
+                <h:outputText style="font-size: 12px" value="#{sessionControl.selectConsultation.dateConsult}" />
+
+                <h:outputText style="font-size: 12px" value="Acte" />
+                <h:outputText style="font-size: 12px" value="#{sessionControl.selectConsultation.acteConsult}" />
+
+                <h:outputText style="font-size: 12px" value="Motif" />
+                <h:outputText style="font-size: 12px" value="#{sessionControl.selectConsultation.motifConsult}" />
+
+                <h:outputText style="font-size: 12px" value="T.A" />
+                <h:outputText style="font-size: 12px" value="#{sessionControl.selectConsultation.tensionConsult}" />
+                
+                <h:outputText style="font-size: 12px" value="Pouls" />
+                <h:outputText  style="font-size: 12px" value="#{sessionControl.selectConsultation.poulsConsult}" />
+                
+                <h:outputText style="font-size: 12px" value="Observations" />
+                <h:outputText style="font-size: 12px" value="#{sessionControl.selectConsultation.observConsult}" />
+                
+                 <h:outputText style="font-size: 12px" value="Conseil Médical" />
+                 <p:inputTextarea style="font-size: 12px" rows="4" cols="90" value="#{sessionControl.conseil.contenuConseil}" />
+                
+            </p:panelGrid> <br/>
+            <p:commandButton style="font-size: 14px"   icon="ui-icon-search" actionListener="#{sessionControl.addConseil}" value="Valider"  />
+     
+        </p:outputPanel>
+    </p:dialog>
+       
+
+                         
+                            </p:panel>
+                            
+                        </div>
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

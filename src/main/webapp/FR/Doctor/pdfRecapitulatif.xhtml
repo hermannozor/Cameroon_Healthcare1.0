@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+    
+    <p:layoutUnit position="west" size="200">
+            
+            <h:form>
+    <p:growl autoUpdate="true"/>
+ 
+    <p:panelMenu style="width:100%; font-size: 12px">
+        <p:submenu label="Gérer le dossier du patient">
+            <p:menuitem value="Créer un dossier" outcome="createMedicalDoc.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Éditer un dossier" outcome="editMedicalDoc.xhtml"  icon="ui-icon-arrowrefresh-1-w" />
+            <p:menuitem value="Consulter un dossier" outcome="viewMedicalDoc.xhtml" icon="ui-icon-disk" />
+            
+        </p:submenu>
+        <p:submenu label="Gérer les évènements">
+            
+            <p:menuitem value="lister les consultations" outcome="eventConsultations.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les examens" outcome="eventExam.xhtml" ajax="false" icon="ui-icon-document"/>
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Gérer votre compte utilisateur" >
+        <p:menuitem value="Éditer le compte" outcome="editDotorProfile.xhtml" ajax="false" icon="ui-icon-document"/>
+        <p:menuitem value="Consulter le compte" outcome="listDoctorProfile.xhtml"  ajax="false" icon="ui-icon-document"/>
+         
+        </p:submenu>
+        
+        <p:submenu label="Plateforme d'échange" >
+    
+            <p:menuitem value="Lister les sujets" outcome="forumHealthCare.xhtml"  ajax="false" icon="ui-icon-document"/>
+        
+        </p:submenu>
+        
+        <p:submenu label="Envoyer un récapitulatif" >
+    
+            <p:menuitem value="Résumé de la consultation" outcome="pdfRecapitulatif.xhtml"  ajax="false" icon="ui-icon-document"/>
+        
+        </p:submenu>
+    
+         <p:submenu label="Déconnexion" >
+    
+            <p:menuitem value="Déconnectez-vous" outcome="quitDoctorSession.xhtml"  ajax="false" icon="ui-icon-document"/>
+        </p:submenu>
+        
+        
+    </p:panelMenu>
+</h:form>
+         
+        </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                    <h:form>
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+                            
+                 <p:menuitem value="Envoyer un mail au patient" url="/FR/Doctor/emailSender.xhtml" icon="ui-icon-home" />
+                 <p:menuitem value="Envoyer un sms au patient" url="/FR/Doctor/smsSender.xhtml" icon="ui-icon-home" />
+    </p:menubar>
+    </div>
+                        <br/>
+            
+                        <div align="center" >
+                           
+                            <p:panel id="panelSource"   style="width: 83%;height: 60%;border-style: hidden">
+                                                      <p:dataTable id="tbl"  liveResize="true"  style="font-size: 12px;border-style: hidden" var="consultation" 
+                                                                   value="#{sessionControl.consultRecap}" 
+                                                                   widgetVar="consultationTable"
+                                                                   emptyMessage="Aucune information trouvée.">
+    
+     <f:facet name="header">
+    
+           
+            <h:commandLink>
+                <p:graphicImage url="/images/pdf.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbl" 
+                                fileName="#{sessionControl.patientToConsult.nomPatient}#{sessionControl.dateFormatteConsult}" 
+                                preProcessor="#{sessionControl.preProcessPDF}" postProcessor="#{sessionControl.postProcessPDF}"  /> 
+                
+      <!--  <p:dataExporter type="pdf" target="tbl" 
+                                fileName="#"{sessionControl.patientToConsult.nomPatient}" 
+                                preProcessor="#"{sessionControl.preProcessPDF} postProcessor="#"{sessionControl.postProcessPDF}"  />  -->
+            </h:commandLink>
+     
+    </f:facet>
+
+    <p:column  style="font-size: 14px;width: 12%" headerText="Date">
+        <h:outputText value="#{consultation.dateConsult}" />
+    </p:column>
+    
+    <p:column  style="font-size: 14px;width: 12%" headerText="Medecin Traitant">
+        <h:outputText value="#{sessionControl.docteur.nomDocteur}" />
+    </p:column>
+ 
+    <p:column  style="font-size: 14px;width: 12%" headerText="Acte">
+        <h:outputText value="#{consultation.acteConsult}" />
+    </p:column>
+ 
+    <p:column  style="font-size: 14px;width: 12%" headerText="Motif">
+        <h:outputText value="#{consultation.motifConsult}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px;width: 12%" headerText="T.A">
+        <h:outputText value="#{consultation.tensionConsult}" />
+    </p:column>
+ 
+    <p:column  style="font-size: 14px;width: 12%" headerText="Pouls">
+        <h:outputText value="#{consultation.poulsConsult}" />
+    </p:column>  
+    <p:column  headerText="Observation">
+        <h:outputText style="text-align: justify;font-size: 14px" value="#{consultation.observConsult}" />
+    </p:column>
+ 
+                                 
+</p:dataTable>
+    
+<br/><br/> 
+          
+         <p:dataTable id="tbo"  liveResize="true"  style="font-size: 12px;border-style: hidden" var="ordonnance" 
+                      value="#{sessionControl.ordoRecap}" 
+                      widgetVar="ordonnanceTable"
+                      emptyMessage="Aucune Ordonnance édité pendant cette consultation.">
+    
+     <f:facet name="header">
+    
+            <h:commandLink>
+                <p:graphicImage url="/images/pdf.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbo" fileName="ordonnance"/>
+            </h:commandLink>
+
+    </f:facet>
+  
+ 
+    <p:column  style="font-size: 14px;width: 12%" headerText="Date">
+        <h:outputText value="#{ordonnance.dateOrdo}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px;width: 30%" headerText="Medecin Traitant">
+        <h:outputText value="#{sessionControl.docteur.nomDocteur}" />
+    </p:column>
+ 
+    <p:column  style="font-size: 14px" headerText="Prescription">
+        <h:outputText style="text-align: justify;font-size: 14px" value="#{ordonnance.prescriptionOrdo}" />
+    </p:column>
+ 
+                                 
+</p:dataTable>
+         
+                            </p:panel>
+                                                     
+                        </div>
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

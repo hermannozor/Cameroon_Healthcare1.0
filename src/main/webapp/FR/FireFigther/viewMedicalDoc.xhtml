@@ -1,0 +1,362 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+    
+    <p:layoutUnit position="west" size="200">
+            
+            <h:form>
+    <p:growl autoUpdate="true"/>
+     <p:panelMenu style="width:100%; font-size: 12px">
+        <p:submenu label="Gérer le dossier médical">
+            <p:menuitem value="Consulter un dossier" outcome="viewMedicalDoc.xhtml" icon="ui-icon-disk" />    
+        </p:submenu>
+        <p:submenu label="Gérer les évènements">
+            
+            <p:menuitem value="lister les consultations" outcome="eventConsultations.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les examens" outcome="eventExam.xhtml" ajax="false" icon="ui-icon-document"/>
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Gérer votre compte utilisateur" >
+        <p:menuitem value="Éditer le compte" outcome="editFireProfile.xhtml" ajax="false" icon="ui-icon-document"/>
+        <p:menuitem value="Consulter le compte" outcome="listFireProfile.xhtml"  ajax="false" icon="ui-icon-document"/>
+         
+        </p:submenu>
+        
+        <p:submenu label="Déconnexion" >
+    
+            <p:menuitem value="Déconnectez-vous" outcome="quitFireSession.xhtml"  ajax="false" icon="ui-icon-document"/>
+        </p:submenu>
+        
+      
+        
+    </p:panelMenu>
+</h:form>
+         
+        </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                    <h:form>
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+    </p:menubar>
+    </div>
+                        <br/>
+            
+                        <div align="center" >
+                            <p:panel style="width: 60%;height: 95%;margin-left: 1%">
+                                 <p:outputLabel style="color: royalblue"> Informations du patient</p:outputLabel>
+    <p:panelGrid columns="2"  style="width: 50%;height: 250px;background-color: royalblue">
+
+    <h:outputText style="font-size: 14px;color: royalblue" value="Nom:" />
+    <p:outputLabel style="font-size: 14px;color: royalblue"  value="#{sessionControl.patientToConsult.nomPatient}" />
+ 
+    <h:outputText  style="font-size: 14px;color: royalblue"   value="Prenom:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.prenomPatient}" />
+ 
+    <h:outputText  style="font-size: 14px;color: royalblue" value="Date de naissance:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.dateNaissPatient}" />
+ 
+    <h:outputText  style="font-size: 14px;color: royalblue" value="Lieu de Naissance:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.lieuNaissPat}" />
+    
+    <h:outputText  style="font-size: 14px;color: royalblue" value="Adresse:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.adressePatient}" />
+ 
+    <h:outputText  style="font-size: 14px;color: royalblue"  value="Téléphone:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue"  value="#{sessionControl.patientToConsult.telephonePatient}" />
+ 
+    <h:outputText  style="font-size: 14px;color: royalblue" value="Email:" />
+    <p:outputLabel   style="font-size: 14px;color: royalblue"  value="#{sessionControl.patientToConsult.emailPat}" />
+ 
+    <h:outputText   style="font-size: 14px;color: royalblue" value="Situation Familiale:" />
+    <p:outputLabel   style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.situationFamPat}" />
+    
+    <h:outputText  style="font-size: 14px;color: royalblue"  value="Profession:" />
+    <p:outputLabel   style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.profPatient}" />
+ 
+    <h:outputText   style="font-size: 14px;color: royalblue"  value="Caisse Sociale:" />
+    <p:outputLabel   style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.caissePat}" />
+ 
+    <h:outputText   style="font-size: 14px;color: royalblue" value="Particularité:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue"  value="#{sessionControl.patientToConsult.particularitePat}" />
+ 
+    <h:outputText   style="font-size: 14px;color: royalblue" value="Médecin traitant:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.medTraitPat}" />
+    
+    <h:outputText  style="font-size: 14px;color: royalblue" value="Correspondant:" />
+    <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.patientToConsult.correspondantPat}" />
+ 
+</p:panelGrid>
+                                
+                            </p:panel>
+                            
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 50%;margin-left: 1%">
+                                
+                                 <p:outputLabel style="color: royalblue"> Antécédents</p:outputLabel> 
+                                 
+                                 <p:dataTable   liveResize="true"  style="font-size: 12px" var="antecedent" value="#{sessionControl.checkPatientAntecedent()}" widgetVar="antecedentTable"
+                        emptyMessage="Aucun antécédent trouvé actuellement.">
+    <p:column headerText="Antécédents médicaux et facteurs de risque">
+        <h:outputText value="#{antecedent.anteMedRis}" />
+    </p:column>
+ 
+    <p:column headerText="Antécédents chirurgicaux et obstétricaux">
+        <h:outputText value="#{antecedent.anteChirObste}" />
+    </p:column>
+ 
+    <p:column headerText="Antécédents familiaux">
+        <h:outputText value="#{antecedent.anteFaml}" />
+    </p:column>
+    
+    <p:column headerText="Allergies et intolérances">
+        <h:outputText value="#{antecedent.allergIntole}" />
+    </p:column>
+    
+                                   </p:dataTable> 
+                            </p:panel>
+
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 30%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue"> Traitement chronique</p:outputLabel>
+                                    
+                                <p:dataTable   liveResize="true"  style="font-size: 12px" var="traitement" value="#{sessionControl.checkPatientTraitement()}" widgetVar="traitementTable"
+                        emptyMessage="Aucune information trouvée.">
+    <p:column style="width: 14%" headerText="Date">
+        <h:outputText value="#{traitement.dateDebutTrait}" />
+    </p:column>
+    <p:column headerText="Nom des comprimés">
+        <h:outputText value="#{traitement.nomComprime}" />
+    </p:column>
+    <p:column headerText="Posologie">
+        <h:outputText value="#{traitement.posologie}" />
+    </p:column>
+ 
+   
+                                   </p:dataTable> 
+                                 
+                                
+                             
+                            </p:panel>
+                            
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 80%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue"> Historique des consultations</p:outputLabel> 
+                                <p:dataTable    liveResize="true"  style="font-size: 12px" var="consultation" value="#{sessionControl.checkPatientConsultation()}" widgetVar="consultationTable"
+                        emptyMessage="Aucune information trouvée.">
+    <p:column style="font-size: 14px; width: 10%" headerText="Date">
+        <h:outputText value="#{consultation.dateConsult}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px; width: 10%" headerText="Acte">
+        <h:outputText value="#{consultation.acteConsult}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Motif">
+        <h:outputText value="#{consultation.motifConsult}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px; width: 9%" headerText="T.A">
+        <h:outputText value="#{consultation.tensionConsult}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px; width: 9%" headerText="Pouls">
+        <h:outputText value="#{consultation.poulsConsult}" />
+    </p:column>  
+    <p:column style="font-size: 14px" headerText="Observation">
+        <h:outputText value="#{consultation.observConsult}" />
+    </p:column>
+ 
+                                 
+</p:dataTable>
+                                
+                            </p:panel>
+                            
+                                
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 80%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue"> Ordonnances</p:outputLabel> 
+                                <p:dataTable resizableColumns="true"  liveResize="true"  style="font-size: 12px" var="ordonnance" value="#{sessionControl.checkPatientOrdonnance()}" widgetVar="ordonnanceTable"
+                        emptyMessage="Aucune information trouvée.">
+    <p:column style="font-size: 14px; width: 10%" headerText="Date">
+        <h:outputText value="#{ordonnance.dateOrdo}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px; width: 11%" headerText="Catégorie">
+        <h:outputText value="#{ordonnance.categorieOrdo}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Prescription">
+        <h:outputText value="#{ordonnance.prescriptionOrdo}" />
+    </p:column>
+ 
+                
+</p:dataTable>
+                                
+                            </p:panel>
+                            
+                                                        
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 80%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue">Courrier et Certificats</p:outputLabel> 
+                                <p:dataTable resizableColumns="true"  liveResize="true"  style="font-size: 12px" var="courrier" value="#{sessionControl.checkPatientCourrier()}" widgetVar="courrierTable"
+                        emptyMessage="Aucune information trouvée.">
+    <p:column style="font-size: 14px; width: 10%" headerText="Date">
+        <h:outputText value="#{courrier.dateCourrier}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px; width: 10%" headerText="Categorie">
+        <h:outputText value="#{courrier.categoCourrier}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px; width: 22%" headerText="Destinataire">
+        <h:outputText value="#{courrier.destinCour}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Texte">
+        <h:outputText value="#{courrier.contenuCour}" />
+    </p:column>
+                                 
+</p:dataTable>
+                                
+                            </p:panel>
+                           
+                                                        
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 80%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue"> Vaccinations</p:outputLabel> 
+                                <p:dataTable resizableColumns="true"  liveResize="true"  style="font-size: 12px" var="vaccination" value="#{sessionControl.checkPatientVaccins()}" widgetVar="vaccinationTable"
+                        emptyMessage="Aucune information trouvée.">
+    <p:column style="font-size: 14px; width: 10%" headerText="Date">
+        <h:outputText value="#{vaccination.dateVacc}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Vaccin">
+        <h:outputText value="#{vaccination.nomVaccin}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Injection">
+        <h:outputText value="#{vaccination.injectionVacc}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Méthode">
+        <h:outputText value="#{vaccination.methodeVacc}" />
+    </p:column>
+    
+    <p:column style="font-size: 14px" headerText="Lot">
+        <h:outputText value="#{vaccination.lotVacc}" />
+    </p:column>
+                                    
+    <p:column style="font-size: 14px" headerText="Résultat">
+        <h:outputText value="#{vaccination.resultatVacc}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px;width: 10%" headerText="Rappel">
+        <h:outputText value="#{vaccination.rappelVacc}" />
+    </p:column>
+ 
+                                 
+</p:dataTable>
+                                
+                            </p:panel>
+                            
+                                                        
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 80%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue"> Examens biologique</p:outputLabel> 
+                                <p:dataTable resizableColumns="true"  liveResize="true"  style="font-size: 12px" var="examen" value="#{sessionControl.checkPatientExamens()}" widgetVar="examenTable"
+                        emptyMessage="Aucune information trouvée.">
+    <p:column style="font-size: 14px; width: 10%" headerText="Date">
+        <h:outputText value="#{examen.dateExam}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Texte">
+        <h:outputText value="#{examen.contenuExam}" />
+    </p:column>
+               
+</p:dataTable>
+                                
+                            </p:panel>
+                            
+                                                       
+                            <p:separator/>
+                            
+                            <p:panel style="width: 90%;height: 80%;margin-left: 1%">
+                                <p:outputLabel style="color: royalblue"> Planification</p:outputLabel> 
+                                <p:dataTable resizableColumns="true"  liveResize="true"  style="font-size: 12px" var="planification" value="#{sessionControl.listPatientPlanification()}" widgetVar="planificationTable"
+                        emptyMessage="Aucune information trouvée.">
+    <p:column style="font-size: 14px; width: 14%" headerText="Prévu le">
+        <h:outputText value="#{planification.prevuLe}" />
+    </p:column>
+ 
+    <p:column style="font-size: 14px" headerText="Objet">
+        <h:outputText value="#{planification.objetPlan}" />
+    </p:column>
+ 
+ <!--   <p:column style="font-size: 14px" headerText="Fait le">
+        <h:outputText value="#"{planification.periodicitePlan}" />
+    </p:column>-->
+ 
+        <p:column style="font-size: 14px" headerText="Périodicité">
+        <h:outputText value="#{planification.periodicitePlan}" />
+                                   
+        </p:column>
+        
+        <p:column style="font-size: 14px" headerText="Commentaire ou résultats">
+            <h:outputText value="#{planification.commentairePlan}" />
+                                   
+        </p:column>
+</p:dataTable>
+                                
+                            </p:panel>
+                            
+                        </div>
+                        
+                   
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+    
+    <p:layoutUnit position="west" size="200">
+            
+            <h:form>
+    <p:growl autoUpdate="true"/>
+ 
+    <p:panelMenu style="width:100%; font-size: 12px">
+        <p:submenu label="Gérer le dossier du patient">
+            <p:menuitem value="Créer un dossier" outcome="createMedicalDoc.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Éditer un dossier" outcome="editMedicalDoc.xhtml"  icon="ui-icon-arrowrefresh-1-w" />
+            <p:menuitem value="Consulter un dossier" outcome="viewMedicalDoc.xhtml" icon="ui-icon-disk" />
+            
+        </p:submenu>
+        <p:submenu label="Gérer les évènements">
+            
+            <p:menuitem value="lister les consultations" outcome="eventConsultations.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les examens" outcome="eventExam.xhtml" ajax="false" icon="ui-icon-document"/>
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Gérer votre compte utilisateur" >
+        <p:menuitem value="Éditer le compte" outcome="editDotorProfile.xhtml" ajax="false" icon="ui-icon-document"/>
+        <p:menuitem value="Consulter le compte" outcome="listDoctorProfile.xhtml"  ajax="false" icon="ui-icon-document"/>
+         
+        </p:submenu>
+        
+        <p:submenu label="Plateforme d'échange" >
+    
+            <p:menuitem value="Lister les sujets" outcome="forumHealthCare.xhtml"  ajax="false" icon="ui-icon-document"/>
+        
+        </p:submenu>
+        
+        
+        <p:submenu label="Envoyer un récapitulatif" >
+    
+            <p:menuitem value="Résumé de la consultation" outcome="pdfRecapitulatif.xhtml"  ajax="false" icon="ui-icon-document"/>
+        
+        </p:submenu>
+
+         <p:submenu label="Déconnexion" >
+    
+            <p:menuitem value="Déconnectez-vous" outcome="quitDoctorSession.xhtml"  ajax="false" icon="ui-icon-document"/>
+        </p:submenu> 
+    </p:panelMenu>
+</h:form>
+         
+        </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                    <h:form>
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+
+          <p:menuitem value="Patient" url="/FR/Doctor/patientProfile.xhtml" icon="ui-icon-home" />
+      
+ 
+        <p:submenu label="Historique"  icon="ui-icon-pencil">
+            <p:menuitem style="font-size: 12px" value="Consultations" url="/FR/Doctor/listConsultationsPatient.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Ordonnances" url="/FR/Doctor/listOrdoPatient.xhtml" />
+            <p:menuitem style="font-size: 12px" value="Courrier" url="/FR/Doctor/listCourrierPatient.xhtml" />
+            <p:menuitem style="font-size: 12px" value="Vacccins" url="/FR/Doctor/listVaccPatient.xhtml" />
+            <p:menuitem style="font-size: 12px" value="Biologie" url="/FR/Doctor/listBioPatient.xhtml" />
+        </p:submenu> 
+ 
+        <p:menuitem value="Consultation" url="/FR/Doctor/consultationPatient.xhtml" icon="ui-icon-home" />  
+        <p:menuitem value="Ordonnance" url="/FR/Doctor/ordonnancePatient.xhtml" icon="ui-icon-home" />    
+        <p:menuitem value="Courrier" url="/FR/Doctor/courrierPatient.xhtml" icon="ui-icon-home" />
+        <p:menuitem value="Vaccins" url="/FR/Doctor/vaccinPatient.xhtml" icon="ui-icon-home" />
+        <p:menuitem value="Biologie" url="/FR/Doctor/biologiePatient.xhtml" icon="ui-icon-home" />
+      
+      
+    </p:menubar>
+    </div>
+                        <br/>
+            
+                        <div align="center" >
+                            <p:panel id="consultDocument" style="font-size: 14px; width: 70%">
+                                <h:panelGrid columns="2" cellpadding="6" style="font-size: 14px;margin-right: 60%">
+      
+        <p:outputLabel for="date" value="Date :" />
+        <p:calendar pattern="dd-MM-yyyy" value="#{sessionControl.dateConvertibleConsult}" 
+        navigator="true" required="true" label="Date :" 
+        id="date" yearRange="-100:-17" />
+        
+        <p:outputLabel for="typePaiement"  value="Type de Paiement:"  />
+        <p:inputText id="typePaiement" placeholder="E (espèce) ou C (chèque)"  value="#{sessionControl.consultation.acteConsult}" label="Type de Paiement:" />
+ 
+        <p:outputLabel for="motif" value="Motif de la consultation:"  />
+        <p:inputTextarea rows="4" cols="40" id="motif"  value="#{sessionControl.consultation.motifConsult}" label="Motif de la consultation:" />
+        
+      
+ 
+        <p:outputLabel for="TA" value="Tension Artérielle:"  />
+        <p:inputText id="TA" value="#{sessionControl.consultation.tensionConsult}" label="Tension Artérielle:" />
+        
+        <p:outputLabel for="Pouls" value="Pouls:"  />
+        <p:inputText id="Pouls" value="#{sessionControl.consultation.poulsConsult}" label="Pouls:" />
+        
+        <p:outputLabel for="Poids" value="Poids:"  />
+        <p:inputText id="Poids" value="#{sessionControl.consultation.poidsConsult}" label="Poids:" />
+        
+        <p:outputLabel for="observations" value="Observations:"  />
+        <p:inputTextarea id="observations"  rows="5" cols="60" value="#{sessionControl.consultation.observConsult}"  />
+      
+        </h:panelGrid>
+                                <br/><br/>
+            
+                                <p:commandButton value="Enregistrer" style="font-size: 16px; margin-left: 70px"  actionListener="#{sessionControl.addConsultation}" icon="ui-icon-check" update="consultDocument"/>
+         
+                                
+                            </p:panel>  
+                         
+                            
+                        </div>
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

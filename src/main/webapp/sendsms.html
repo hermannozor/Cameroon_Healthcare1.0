@@ -1,0 +1,48 @@
+<!--
+VotreLoginZAGSMS=Le Numero de telephone avec lequel vous avez crée votre compte sur ZAGSMS.net au format international.Exemple :23796141711
+
+VotreMotdePasseZAGSMS=Le mot de passe correspondant à votre compte sur ZAGSMS.net
+
+SenderID=Votre Identifiant d’envoi qui peut etre numérique (17 caractères maximum) ou alphanumérique (11 caractères Maximum).
+
+Indicatifdupaysdestinataire=Exempe:237 pour le Cameroun; Indicatif du Pays de destination.
+
+Destination=Exempe:96141711; numero de telephone mobile du destinataire sans l'inidicatif du pays de destination.
+
+Message=Votre message avec 160 caractères maximum/sms.
+/-->
+<html>
+ <body>
+   <h1>Mon Formulaire SMS</h1>
+   <form method=post action='sendsms.php'>
+   <table border=0>
+   <tr>
+     <td>Destination</td>
+     <td>
+	 <select name="codest">
+	   <option value="237">CAMEROUN</option>
+	   <option value="1">USA-CANADA</option>
+	 </select></td>
+   </tr>
+   <tr>
+     <td>Ideantifiant d'envoi</td>
+     <td><input type='text' name='sender'></td>
+   </tr>
+   <tr>
+     <td>Destinataire</td>
+     <td><input type='text' name='recipient'></td>
+   </tr>
+   <tr>
+     <td>Message</td>
+     <td><textarea rows=4 cols=40 name='message'></textarea></td>
+   </tr>
+   <tr>
+     <td> </td>
+     <td><input type=submit name=submit value=Envoyer Votre SMS></td>
+   </tr>
+   </table>
+   </form>
+ </body>
+</html>
+
+

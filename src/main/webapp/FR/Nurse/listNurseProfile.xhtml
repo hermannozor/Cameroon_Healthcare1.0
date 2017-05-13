@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+    
+    <p:layoutUnit position="west" size="200">
+            
+            <h:form>
+    <p:growl autoUpdate="true"/>
+ 
+     <p:panelMenu style="width:100%; font-size: 12px">
+        <p:submenu label="Gérer le dossier médical">
+            <p:menuitem value="Consulter un dossier" outcome="viewMedicalDoc.xhtml" icon="ui-icon-disk" />    
+        </p:submenu>
+        <p:submenu label="Gérer les évènements">
+            
+            <p:menuitem value="lister les consultations" outcome="eventConsultations.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les examens" outcome="eventExam.xhtml" ajax="false" icon="ui-icon-document"/>
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Gérer votre compte utilisateur" >
+        <p:menuitem value="Éditer le compte" outcome="editNurseProfile.xhtml" ajax="false" icon="ui-icon-document"/>
+        <p:menuitem value="Consulter le compte" outcome="listNurseProfile.xhtml"  ajax="false" icon="ui-icon-document"/>
+         
+        </p:submenu>
+        
+        <p:submenu label="Déconnexion" >
+    
+            <p:menuitem value="Déconnectez-vous" outcome="quitNurseSession.xhtml"  ajax="false" icon="ui-icon-document"/>
+        </p:submenu>
+        
+      
+        
+    </p:panelMenu>
+</h:form>
+         
+        </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                     
+                    <h:form>
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+    </p:menubar>
+    </div>
+                        <br/>
+            
+                        <div align="center" >
+                           
+                              <p:panel id="panelSource"  style="width: 83%;height: 60%;border-style: hidden">
+                                
+        
+ <p:fieldset legend="Informations de votre compte" style="margin-bottom:20px">
+    <p:panelGrid columns="2"  style="width: 50%;height: 250px;background-color: royalblue">
+        
+      <h:outputText style="font-size: 14px;color: royalblue" value="Nom:"  />
+      <p:outputLabel style="font-size: 14px;color: royalblue" id="nom" value="#{sessionControl.urgentiste.nomUrg}" />
+ 
+        <h:outputText style="font-size: 14px;color: royalblue"  value="Prenom:"  />
+        <p:outputLabel style="font-size: 14px;color: royalblue" id="prenom" value="#{sessionControl.urgentiste.prenomUrg}"/>
+        
+        
+        <h:outputText  style="font-size: 14px;color: royalblue"  value="Genre:"  />
+        <p:outputLabel value="#{sessionControl.urgentiste.genreUrg}" style="font-size: 14px;color: royalblue" />
+           
+ 
+      
+        <h:outputText  style="font-size: 14px;color: royalblue" value="Adresse :"  />
+        <p:outputLabel style="font-size: 14px;color: royalblue" value="#{sessionControl.urgentiste.adresseUrg}"/>
+        
+        
+        <h:outputText style="font-size: 14px;color: royalblue"  value="Tél:"  />
+        <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.urgentiste.telephoneUrg}" />
+        
+        
+        
+        <h:outputText  style="font-size: 14px;color: royalblue" value="Matricule professionnel:"  />
+        <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.urgentiste.matriculeUrg}" />
+        
+        
+        <h:outputText style="font-size: 14px;color: royalblue"  value="Numéro de la CNI:"  />
+        <p:outputLabel  style="font-size: 14px;color: royalblue" value="#{sessionControl.urgentiste.cniUrg}" />
+        
+        
+        
+        <h:outputText style="font-size: 14px;color: royalblue" value="Categorie:"  />
+        <p:outputLabel style="font-size: 14px;color: royalblue" value="#{sessionControl.urgentiste.categorieUrg}"  />
+            
+ </p:panelGrid>
+ </p:fieldset>
+   
+                            </p:panel>
+                                                     
+                        </div>
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

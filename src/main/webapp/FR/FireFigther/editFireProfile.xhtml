@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+    
+    <p:layoutUnit position="west" size="200">
+            
+            <h:form>
+    <p:growl autoUpdate="true"/>
+ 
+     <p:panelMenu style="width:100%; font-size: 12px">
+        <p:submenu label="Gérer le dossier médical">
+            <p:menuitem value="Consulter un dossier" outcome="viewMedicalDoc.xhtml" icon="ui-icon-disk" />    
+        </p:submenu>
+        <p:submenu label="Gérer les évènements">
+            
+            <p:menuitem value="lister les consultations" outcome="eventConsultations.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les examens" outcome="eventExam.xhtml" ajax="false" icon="ui-icon-document"/>
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Gérer votre compte utilisateur" >
+        <p:menuitem value="Éditer le compte" outcome="editFireProfile.xhtml" ajax="false" icon="ui-icon-document"/>
+        <p:menuitem value="Consulter le compte" outcome="listFireProfile.xhtml"  ajax="false" icon="ui-icon-document"/>
+         
+        </p:submenu>
+        
+        <p:submenu label="Déconnexion" >
+    
+            <p:menuitem value="Déconnectez-vous" outcome="quitFireSession.xhtml"  ajax="false" icon="ui-icon-document"/>
+        </p:submenu>
+        
+      
+        
+    </p:panelMenu>
+</h:form>
+         
+        </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                    <h:form id="editNurseProfile">
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+    </p:menubar>
+    </div>
+                        <br/>
+            
+                        <div align="center" >
+                               <p:panel id="panelSource" style="width: 80%;height: 60%;border-style: hidden">
+                                
+                                 <p:fieldset legend="Informations de votre compte" style="margin-bottom:20px">
+           
+         <h:panelGrid columns="2" cellpadding="5" style="font-size: 14px;margin-right: 60%">
+             
+      <p:outputLabel for="nom"  value="Nom:"  />
+      <p:inputText style="width: 100%" id="nom" value="#{sessionControl.pompier.nomPompier}" label="nom" />
+ 
+        <p:outputLabel for="prenom" value="Prenom:"  />
+        <p:inputText style="width: 100%" id="prenom" value="#{sessionControl.pompier.prenomPompier}" label="prenom" />
+        
+        <h:outputLabel for="pwd1" value="mot de passe: *" />
+        <p:inputText style="width: 100%" id="pwd1" value="#{sessionControl.pompier.mpPompier}"  label="mot de passe:"  />
+ 
+        <h:outputLabel for="pwd2" value="confirmer le mot de passe: *" />
+        <p:inputText style="width: 100%" id="pwd2" value="#{sessionControl.pompier.mpPompier}" label="confirmer le mot de passe:"  />
+
+        <p:outputLabel for="genre" value="Genre:"  />
+        <p:selectOneMenu id="genre" value="#{sessionControl.pompier.genrePompier}" style="width: 100%">
+            <f:selectItem itemLabel="Sélectionnez" noSelectionOption="true"  itemValue="none" />
+            <f:selectItem itemLabel="M" itemValue="M" />
+            <f:selectItem itemLabel="F" itemValue="F" />
+        </p:selectOneMenu>
+ 
+        <p:outputLabel for="adresseUrg" value="Adresse personnelle:"  />
+        <p:inputText id="adresseUrg" style="width: 100%" value="#{sessionControl.pompier.adressePompier}" label="adresse" />
+        
+       
+        <p:outputLabel for="telUrg" value="Tél:"  />
+        <p:inputText id="telUrg" style="width: 100%" value="#{sessionControl.pompier.telephonePompier}" label="telDoc" />
+        
+       
+        <p:outputLabel for="matriculeUrg" value="Matricule professionnel:"  />
+        <p:inputText id="matriculeUrg" style="width: 100%" value="#{sessionControl.pompier.matriculePompier}" label="matriculeDoc" />
+        
+        
+        <p:outputLabel for="cniUrg" value="Numéro de la CNI:"  />
+        <p:inputText id="cniUrg" style="width: 100%" value="#{sessionControl.pompier.cniPompier}" label="cniDoc" />
+        
+        
+        
+        </h:panelGrid>
+    </p:fieldset> 
+    
+  </p:panel>   
+     
+     
+                            <p:commandButton value="Enregistrer" style="font-size: 14px; margin-left: 1%" actionListener="#{sessionControl.updateFireProfile()}" icon="ui-icon-check" update="editNurseProfile"  />
+     
+     
+                                  
+                        </div>
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

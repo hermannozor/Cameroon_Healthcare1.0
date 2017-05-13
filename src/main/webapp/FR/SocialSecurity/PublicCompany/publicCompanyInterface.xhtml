@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+                    <div align="center" >
+                        <h:outputText value="Camtel © 2016" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+                    
+                    </div>        
+                </p:layoutUnit>
+            </p:layout>
+            <p:layoutUnit position="center" >
+                    
+                <h:form>
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+
+        <p:menuitem value="Accueil" url="/FR/Other/index.xhtml" icon="ui-icon-home" />
+      
+ 
+        <p:submenu label="A Propos"  icon="ui-icon-pencil">
+            <p:menuitem style="font-size: 12px" value="C'est quoi Camtel HealthCare?" url="/FR/Other/aboutHealthCare.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Améliorer votre santé" url="/FR/Other/aboutImprove.xhtml" />
+            <p:menuitem style="font-size: 12px" value="Comment s'abonner" url="/FR/Other/aboutSuscribe.xhtml" />
+        </p:submenu>
+ 
+         <p:submenu label="Services Offerts" icon="ui-icon-folder-collapsed">
+            <p:menuitem style="font-size: 12px" value="Conseil de santé" url="/FR/Other/serviceAdvice.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Conseil sur l'hygiène de vie" url="/FR/Other/serviceHygiene.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Plateforme de discussion" url="/FR/Other/serviceChat.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Gérer votre dossier médical" url="/FR/Other/serviceMedicalFolder.xhtml"  />
+            
+        </p:submenu>
+ 
+        <p:submenu label="Actuallité" icon="ui-icon-signal-diag">
+            <p:menuitem style="font-size: 12px" value="Nouvelles" url="/FR/Other/breakingNews.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Évènements" url="/FR/Other/newEvent.xhtml"  />
+      
+        </p:submenu>
+ 
+        <p:menuitem value="Contactez-Nous" url="/FR/Other/contacts.xhtml" icon="ui-icon-contact"  />
+        
+        <p:menuitem value="Sécurité Sociale" url="/FR/SocialSecurity/welcomeSocialPage.xhtml" icon="ui-icon-person"  />
+        
+        
+        <f:facet name="options">
+         
+            <p:commandButton   action="#{sessionControl.authenPerson()}" value="S'identifier" icon="ui-icon-extlink"/>
+        
+        </f:facet>
+    </p:menubar>
+                        <br/>
+       <p:panel style="height: 100%; width: 80%;text-align: justify;border: hidden">
+           <p:tabMenu activeIndex="#{param.i}" style="font-size: 16px">
+               <p:menuitem value="Maladie" outcome="/FR/Doctor/consultationPatient.xhtml" icon="ui-icon-heart">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Famille" outcome="/FR/SocialSecurity/PublicCompany/familySecurity.xhtml"  icon="ui-icon-home">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+    <p:menuitem value="Accidents du travail Maladies professionnelles" outcome="/FR/SocialSecurity/PublicCompany/accidentSecurity.xhtml" icon="ui-icon-alert">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+    <p:menuitem value="Cotisations Recouvrement" outcome="/FR/SocialSecurity/PublicCompany/cotisationsSecurity.xhtml"  icon="ui-icon-wrench">
+        <f:param name="i" value="3" />
+    </p:menuitem>
+    <p:menuitem value="Retraite"  outcome="/FR/SocialSecurity/PublicCompany/retreatSecurity.xhtml" icon="ui-icon-person">
+        <f:param name="i" value="4" />
+    </p:menuitem>
+</p:tabMenu>
+ 
+        </p:panel>
+   <p:panel style="height: 100%; width: 70%;text-align: justify; border: hidden">
+                            
+             <p:fieldset legend="Qu’est ce que la branche maladie ?" style="margin-bottom:20px">
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:graphicImage url="/images/securite_sociale.jpg" style="width: 300px; height: 300px" />
+            <h:outputText style="font-size: 14px"
+                value= "La branche maladie de la Sécurité sociale assure la prise en charge des dépenses de santé des assurés malades et garantit l’accès aux soins. Elle mène également différents programmes de prévention, et grâce à son action sociale, favorise l’accès à la santé des plus démunis et contribue au fonctionnement d’établissements médico-sociaux.
+
+Les missions :
+Dans la plupart des régimes, la branche maladie gère aussi, lorsqu’ils existent, les risques :
+
+Maternité : prise en charge des examens pré et postnataux et octroi d’indemnités journalières pendant le congé de maternité
+Invalidité : octroi d’une pension lorsque l’assuré présente une invalidité réduisant sa capacité de travail ou de gains dans des proportions déterminées.
+Décès : paiement d’un capital égal à un multiple de gain journalier de base en cas de décès de l’assuré.
+La gestion du risque est également au cœur de la mission de la branche maladie. Elle consiste dans la maîtrise de l’évolution des dépenses tout en améliorant l’état de santé de la population. La maîtrise médicalisée qui permet des gains de productivité dans le système de soins fait partie des outils utilisés." />
+        </h:panelGrid>
+    </p:fieldset>
+    
+          </p:panel>            
+    </div>
+    <div  align="center">
+                   
+                   <p:panel style="height: 40%;width: 80%;border-style: none">
+                       
+                       <h:panelGrid columns="3" cellpadding="50" style="border: black">
+                            
+                           <p:panel header="Notre Adresse">
+                              <h:panelGrid columns="1" cellpadding="10" style="border: black;width: 200px; height: 130px">
+                                  <h:outputText style="font-size: 12px" value="Tel: 222 23 40 65 " />
+                             <h:outputText  style="font-size: 12px" value="Adresse: Rond point poste centrale, Yaoundé Centre ville" />
+                             <h:outputText style="font-size: 12px" value="Site Web: www.camtel.cm" />
+                            </h:panelGrid>
+                            </p:panel>     
+                           
+                           <p:panel header="Liens Utiles">
+                            <h:panelGrid columns="1" cellpadding="10" style="border: black;width: 200px; height: 165px">
+                             <h:outputLink value="http://localhost:8080/healthCare/FR/Other/contacts.xhtml"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>
+                             <h:outputLink value="http://localhost:8080/healthCare/FR/Other/serviceAdvice.xhtml"  style="font-size: 12px;text-decoration: none"><h:outputText value="Nos services" /></h:outputLink>
+                             <h:outputLink value="http://localhost:8080/healthCare/FR/Other/aboutHealthCare.xhtml"  style="font-size: 12px;text-decoration: none"><h:outputText value="A Propos" /></h:outputLink>
+                            </h:panelGrid>
+                            </p:panel>     
+                               
+  
+                       </h:panelGrid>
+                        </p:panel>
+                        </div>
+              </h:form>
+           </p:layoutUnit> 
+        </h:body>
+  </f:view>
+</html>
+

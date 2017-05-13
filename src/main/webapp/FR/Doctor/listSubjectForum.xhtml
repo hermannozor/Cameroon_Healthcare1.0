@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+               
+               
+    
+    <p:layoutUnit position="west" size="200">
+            
+            <h:form>
+                
+    <p:growl autoUpdate="true"/>
+    
+     <p:panelMenu style="width:100%; font-size: 12px">
+        <p:submenu label="Gérer le dossier du patient">
+            <p:menuitem value="Créer un dossier" outcome="createMedicalDoc.xhtml" icon="ui-icon-disk" />
+            <p:menuitem value="Éditer un dossier" outcome="editMedicalDoc.xhtml"  icon="ui-icon-arrowrefresh-1-w" />
+            <p:menuitem value="Consulter un dossier" outcome="viewMedicalDoc.xhtml" icon="ui-icon-disk" />
+            
+        </p:submenu>
+        <p:submenu label="Gérer les évènements">
+            
+            <p:menuitem value="lister les consultations" outcome="eventConsultations.xhtml" ajax="false" icon="ui-icon-document"/>
+            <p:menuitem value="Lister les examens" outcome="eventExam.xhtml" ajax="false" icon="ui-icon-document"/>
+            
+        </p:submenu>
+        <p:separator />
+        <p:submenu label="Gérer votre compte utilisateur" >
+        <p:menuitem value="Éditer le compte" outcome="editDotorProfile.xhtml" ajax="false" icon="ui-icon-document"/>
+        <p:menuitem value="Consulter le compte" outcome="listDoctorProfile.xhtml"  ajax="false" icon="ui-icon-document"/>
+         
+        </p:submenu>
+        
+        <p:submenu label="Plateforme d'échange" >
+    
+            <p:menuitem value="Lister les sujets" outcome="forumHealthCare.xhtml"  ajax="false" icon="ui-icon-document"/>
+        
+        </p:submenu>
+        
+        <p:submenu label="Envoyer un récapitulatif" >
+    
+            <p:menuitem value="Résumé de la consultation" outcome="pdfRecapitulatif.xhtml"  ajax="false" icon="ui-icon-document"/>
+        
+        </p:submenu>
+        
+         <p:submenu label="Déconnexion" >
+    
+            <p:menuitem value="Déconnectez-vous" outcome="quitDoctorSession.xhtml"  ajax="false" icon="ui-icon-document"/>
+        </p:submenu>
+        
+        
+    </p:panelMenu>
+
+</h:form>
+         
+        </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                    
+                    
+                    <h:form id="updateMedicalDocument">
+                        <div align="center">
+                        <h:graphicImage url="/images/slide.jpg" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+                        
+                     
+    </div>
+                        <br/>
+            
+                        <div align="center" >
+                            <p:panel id="panelSource" style="width: 80%;height: 60%;border-style: hidden">
+                         <p:dataScroller  value="#{sessionControl.listSujetForum}" var="sujet" chunkSize="10" widgetVar="subjectTable" >
+        <f:facet name="header">
+            Liste des différents sujets
+        </f:facet>
+ 
+        <h:panelGrid columns="2" style="width:100%; height: 20%" columnClasses="logo,detail">
+            <p:graphicImage url="/images/default_image.png" style="width: 90px; height: 90px" />
+ 
+            <p:outputPanel>
+                <h:panelGrid columns="2" style="margin-right: 90%; font-size: 14px" cellpadding="5">
+                    <h:outputText style="color: royalblue" value="Date de la publication: #{sujet.dateCreationSujet}" />
+                    
+ 
+                    <p:inputTextarea value="#{sujet.descriptionSujet}" disabled="true"  rows="2" style="font-weight: bold" cols="80" />
+ 
+                    <p:commandButton tabindex="#{sujet.idForum}"  value="Consulter" action="#{sessionControl.showDetailsDiscussionDoctor(sujet)}"   icon="ui-icon-check" />
+    
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+        <p:separator/>
+    </p:dataScroller>
+                            </p:panel>
+                     </div>
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

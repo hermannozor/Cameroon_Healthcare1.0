@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="FR/Doctor/courrierPatient.xhtml" x="1097" y="-2" zoom="true"/>
+        <Node id="FR/Doctor/editDotorProfile.xhtml" x="644" y="579" zoom="true"/>
+        <Node id="FR/Nurse/authenticateNurse.xhtml" x="706" y="20" zoom="true"/>
+        <Node id="FR/Nurse/viewMedicalDoc.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="FR/Doctor/listSubjectForum.xhtml" x="214" y="493" zoom="true"/>
+        <Node id="FR/Patient/editerMedicalDoc.xhtml" x="705" y="241" zoom="true"/>
+        <Node id="FR/Patient/deleteUserAccount.xhtml" x="705" y="208" zoom="true"/>
+        <Node id="FR/Doctor/eventConsultations.xhtml" x="1096" y="39" zoom="true"/>
+        <Node id="FR/Doctor/biologiePatient.xhtml" x="714" y="394" zoom="true"/>
+        <Node id="FR/Patient/forumPatientPage.xhtml" x="388" y="212" zoom="true"/>
+        <Node id="FR/Other/error.xhtml" x="4" y="-113" zoom="true"/>
+        <Node id="FR/Nurse/editNurseProfile.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="FR/Patient/sujetsForum.xhtml" x="386" y="253" zoom="true"/>
+        <Node id="FR/Other/contacts.xhtml" x="7" y="227" zoom="true"/>
+        <Node id="FR/Nurse/listNurseProfile.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="FR/Doctor/listConsultationsPatient.xhtml" x="1090" y="362" zoom="true"/>
+        <Node id="FR/Doctor/comingSoon.xhtml" x="1090" y="406" zoom="true"/>
+        <Node id="FR/Doctor/authenticateDoctor.xhtml" x="368" y="-385" zoom="true"/>
+        <Node id="FR/Nurse/eventExam.xhtml" x="3" y="-62" zoom="true"/>
+        <Node id="FR/FireFigther/editFireProfile.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="FR/Other/serviceMedicalFolder.xhtml" x="348" y="-263" zoom="true"/>
+        <Node id="FR/Other/serviceChat.xhtml" x="143" y="-389" zoom="true"/>
+        <Node id="FR/Doctor/suscribeDoctor.xhtml" x="8" y="75" zoom="true"/>
+        <Node id="FR/Patient/sujetPublication.xhtml" x="706" y="299" zoom="true"/>
+        <Node id="FR/Doctor/vaccinPatient.xhtml" x="1095" y="154" zoom="true"/>
+        <Node id="FR/Doctor/pdfRecapitulatif.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="FR/Doctor/forumHealthCare.xhtml" x="201" y="432" zoom="true"/>
+        <Node id="FR/Doctor/eventExam.xhtml" x="1096" y="202" zoom="true"/>
+        <Node id="FR/Doctor/smsSender.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="FR/Doctor/quitDoctorSession.xhtml" x="803" y="-600" zoom="true"/>
+        <Node id="FR/Doctor/listOrdoPatient.xhtml" x="1091" y="322" zoom="true"/>
+        <Node id="FR/Other/index.xhtml" x="417" y="-631" zoom="true"/>
+        <Node id="FR/FireFigther/listFireProfile.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="FR/Doctor/patientProfile.xhtml" x="713" y="463" zoom="true"/>
+        <Node id="FR/FireFigther/eventConsultations.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="FR/FireFigther/welcomeFireFigtherPage.xhtml" x="705" y="100" zoom="true"/>
+        <Node id="FR/Other/serviceAdvice.xhtml" x="387" y="167" zoom="true"/>
+        <Node id="FR/Other/serviceHygiene.xhtml" x="706" y="-40" zoom="true"/>
+        <Node id="FR/Nurse/eventConsultations.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="FR/Patient/editUserProfile.xhtml" x="704" y="138" zoom="true"/>
+        <Node id="FR/Other/chooseLoginMode.xhtml" x="65" y="-517" zoom="true"/>
+        <Node id="FR/FireFigther/patientProfile.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="FR/Other/aboutSuscribe.xhtml" x="9" y="156" zoom="true"/>
+        <Node id="images/listConsultationsPatient.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="FR/FireFigther/authenticateFireFigther.xhtml" x="318" y="-176" zoom="true"/>
+        <Node id="FR/Doctor/emailSender.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="FR/Doctor/createMedicalDoc.xhtml" x="1092" y="286" zoom="true"/>
+        <Node id="FR/Other/aboutImprove.xhtml" x="-2" y="-650" zoom="true"/>
+        <Node id="FR/Doctor/publishSomethingForum.xhtml" x="277" y="563" zoom="true"/>
+        <Node id="FR/FireFigther/quitFireSession.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="FR/Other/breakingNews.xhtml" x="7" y="265" zoom="true"/>
+        <Node id="FR/FireFigther/viewMedicalDoc.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="FR/Doctor/listBioPatient.xhtml" x="1097" y="114" zoom="true"/>
+        <Node id="FR/Other/aboutHealthCare.xhtml" x="8" y="194" zoom="true"/>
+        <Node id="FR/Patient/healthAdvices.xhtml" x="706" y="171" zoom="true"/>
+        <Node id="sendsms.html" x="900" y="450" zoom="true"/>
+        <Node id="FR/Patient/listPatientEvents.xhtml" x="673" y="-413" zoom="true"/>
+        <Node id="FR/Patient/discussionForum.xhtml" x="387" y="300" zoom="true"/>
+        <Node id="FR/Nurse/patientProfile.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="FR/Other/newEvent.xhtml" x="714" y="429" zoom="true"/>
+        <Node id="FR/Nurse/welcomeNursePage.xhtml" x="707" y="61" zoom="true"/>
+        <Node id="FR/FireFigther/eventExam.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="FR/Doctor/listCourrierPatient.xhtml" x="678" y="529" zoom="true"/>
+        <Node id="FR/Patient/listExamsEvents.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="FR/Doctor/consultationPatient.xhtml" x="1095" y="-44" zoom="true"/>
+        <Node id="FR/Doctor/listVaccPatient.xhtml" x="1095" y="246" zoom="true"/>
+        <Node id="FR/Doctor/editMedicalDoc.xhtml" x="1091" y="451" zoom="true"/>
+        <Node id="FR/Patient/welcomePatientPage.xhtml" x="769" y="-292" zoom="true"/>
+        <Node id="FR/Doctor/listDoctorProfile.xhtml" x="1096" y="76" zoom="true"/>
+        <Node id="FR/Doctor/viewMedicalDoc.xhtml" x="715" y="356" zoom="true"/>
+        <Node id="FR/FireFigther/suscribeFireFighter.xhtml" x="-22" y="-202" zoom="true"/>
+        <Node id="FR/Doctor/welcomeDoctorPage.xhtml" x="755" y="-330" zoom="true"/>
+        <Node id="FR/Patient/quitPatientSession.xhtml" x="800" y="-506" zoom="true"/>
+        <Node id="FR/Patient/consultMedicalDoc.xhtml" x="1099" y="-127" zoom="true"/>
+        <Node id="FR/Nurse/suscribeNurse.xhtml" x="8" y="117" zoom="true"/>
+        <Node id="FR/Nurse/quitNurseSession.xhtml" x="641" y="-708" zoom="true"/>
+        <Node id="FR/Patient/consultUserProfile.xhtml" x="739" y="-376" zoom="true"/>
+        <Node id="FR/Patient/suscribePatient.xhtml" x="365" y="-493" zoom="true"/>
+        <Node id="FR/Patient/authenticatePatient.xhtml" x="351" y="-227" zoom="true"/>
+        <Node id="FR/Doctor/ordonnancePatient.xhtml" x="1096" y="-84" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

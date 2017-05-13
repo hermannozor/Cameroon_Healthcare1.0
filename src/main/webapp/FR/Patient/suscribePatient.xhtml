@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Camtel HealthCare</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+
+            <p:layout fullPage="true">
+    <!-- Footer-->
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true" >
+            
+            <div align="center" >
+                            <h:outputText value="Camtel © 2015" style="font-size: 12px"/>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Plan du Site" /></h:outputLink>    |       <h:outputLink value="http://www.primefaces.org"  style="font-size: 12px;text-decoration: none"><h:outputText value="Politique de confidentialité" /></h:outputLink>     |       <h:outputLink value="http://www.primefaces.org" style="font-size: 12px;text-decoration: none"><h:outputText value="Conditions d'utilisation"/></h:outputLink>     | 
+            </div>        
+                </p:layoutUnit>
+
+              
+    <!-- Body-->
+                <p:layoutUnit position="center" >
+                    
+                    <h:form id="suscribePatient">
+                        <div align="center">
+                        <h:graphicImage url="/images/banner.png" style="width: 80%; height: 50%"/>
+
+                        <p:growl id="messages"/>
+ 
+                        <p:menubar style="margin-left: 10%;margin-right: 10%; font-size: 14px">
+
+          <p:menuitem value="Accueil" url="/FR/Other/index.xhtml" icon="ui-icon-home" />
+      
+ 
+        <p:submenu label="A Propos"  icon="ui-icon-pencil">
+            <p:menuitem style="font-size: 12px" value="C'est quoi Camtel HealthCare?" url="/FR/Other/aboutHealthCare.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Améliorer votre santé" url="/FR/Other/aboutImprove.xhtml" />
+            <p:menuitem style="font-size: 12px" value="Comment s'abonner" url="/FR/Other/aboutSuscribe.xhtml" />
+        </p:submenu>
+ 
+         <p:submenu label="Services Offerts" icon="ui-icon-folder-collapsed">
+            <p:menuitem style="font-size: 12px" value="Conseil de santé" url="/FR/Other/serviceAdvice.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Conseil sur l'hygiène de vie" url="/FR/Other/serviceHygiene.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Plateforme de discussion" url="/FR/Other/serviceChat.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Gérer votre dossier médical" url="/FR/Other/serviceMedicalFolder.xhtml"  />
+            
+        </p:submenu>
+ 
+        <p:submenu label="Actuallité" icon="ui-icon-signal-diag">
+            <p:menuitem style="font-size: 12px" value="Nouvelles" url="/FR/Other/breakingNews.xhtml"  />
+            <p:menuitem style="font-size: 12px" value="Évènements" url="/FR/Other/newEvent.xhtml"  />
+      
+        </p:submenu>
+ 
+        <p:menuitem value="Contactez-Nous" url="/FR/Other/contacts.xhtml" icon="ui-icon-contact"  />
+        
+        <f:facet name="options">
+          
+            <p:commandButton immediate="true"   action="#{sessionControl.authenPerson()}" value="S'identifier" icon="ui-icon-extlink"/>
+         </f:facet>
+    </p:menubar>
+    </div>
+                        
+                        
+      <div align="center">
+    <p:layout style="width: 80%;height: 400px">
+        <p:layoutUnit position="west" size="300" style="border-style: hidden">
+        <h:graphicImage url="/images/doctor8.jpg" style="width: 90%; height: 90%"/>
+        </p:layoutUnit>
+ 
+        <p:layoutUnit position="center" style="border-style: hidden">
+         <p:outputLabel style="color: royalblue"> Inscrivez-vous comme un patient</p:outputLabel> <br/><br/>
+         
+         <h:panelGrid columns="2" cellpadding="6" style="font-size: 14px;margin-right: 60%">
+        <p:outputLabel for="nom"  value="Nom:"  />
+        <p:inputText id="nom"  value="#{sessionControl.patient.nomPatient}" label="nom" />
+ 
+        <p:outputLabel for="prenom" value="Prenom:"  />
+        <p:inputText id="prenom"  value="#{sessionControl.patient.prenomPatient}" label="prenom" />
+        
+        <p:outputLabel for="date" value="Date de naissance:" />
+        <p:calendar pattern="dd-MM-yyyy" value="#{sessionControl.dateConvertible}" 
+        navigator="true"  label="Date de naissance:" 
+        id="date" yearRange="-100:-17" />
+       
+       <h:outputLabel for="pwd1" value="mot de passe: " />
+       <p:password id="pwd1" value="#{sessionControl.patient.mpPatient}" match="pwd2" label="mot de passe:" />
+ 
+       <h:outputLabel for="pwd2" value="confirmer le mot de passe: " />
+       <p:password id="pwd2" value="#{sessionControl.patient.mpPatient}" label="confirmer le mot de passe:"  />
+
+        
+        <p:outputLabel for="genre" value="Genre:"  />
+        <p:selectOneMenu id="genre" value="#{sessionControl.patient.genrePatient}" style="width:205px">
+            <f:selectItem itemLabel="Sélectionnez" noSelectionOption="true"  itemValue="none" />
+            <f:selectItem itemLabel="M" itemValue="M" />
+            <f:selectItem itemLabel="F" itemValue="F" />
+        </p:selectOneMenu>
+ 
+        <p:outputLabel for="adresse" value="Adresse:"  />
+        <p:inputText id="adresse" value="#{sessionControl.patient.adressePatient}" label="adresse" />
+        
+        <p:outputLabel for="telPat" value="Tél:"  />
+        <p:inputText id="telPat" value="#{sessionControl.patient.telephonePatient}" label="telPat" />
+        
+        <p:outputLabel for="cniPat" value="Numéro de la CNI:"  />
+        <p:inputText id="cniPat" value="#{sessionControl.patient.cniPatient}" label="cniPat" />
+        
+        </h:panelGrid>
+          <br/><br/>
+            
+          <p:commandButton value="S'inscrire" style="font-size: 16px; margin-left: 70px"  action="#{sessionControl.addPatient()}" icon="ui-icon-check" update="suscribePatient"/>
+         
+        
+        </p:layoutUnit>
+        
+      
+    </p:layout>
+    </div>
+                        
+                        <div  align="center">
+                   
+                   <p:panel  style="height: 40%;width: 80%;border-style: none">
+                       
+                      <h:panelGrid columns="3" cellpadding="50" style="border: black">
+                            
+                           <p:panel header="Notre Adresse">
+                              <h:panelGrid columns="1" cellpadding="10" style="border: black;width: 200px; height: 130px">
+                                  <h:outputText style="font-size: 12px" value="Tel: 222 23 40 65 " />
+                             <h:outputText  style="font-size: 12px" value="Adresse: Rond point poste centrale, Yaoundé Centre ville" />
+                             <h:outputText style="font-size: 12px" value="Site Web: www.camtel.cm" />
+                            </h:panelGrid>
+                            </p:panel>     
+                           
+                           <p:panel header="Liens Utiles">
+                            <h:panelGrid columns="1" cellpadding="10" style="border: black;width: 200px; height: 165px">
+                             <h:outputLink value="http://localhost:8080/healthCare/FR/Other/contacts.xhtml"  style="font-size: 12px;text-decoration: none"><h:outputText value="Contactez-Nous" /></h:outputLink>
+                             <h:outputLink value="http://localhost:8080/healthCare/FR/Other/serviceAdvice.xhtml"  style="font-size: 12px;text-decoration: none"><h:outputText value="Nos services" /></h:outputLink>
+                             <h:outputLink value="http://localhost:8080/healthCare/FR/Other/aboutHealthCare.xhtml"  style="font-size: 12px;text-decoration: none"><h:outputText value="A Propos" /></h:outputLink>
+                            </h:panelGrid>
+                            </p:panel>     
+                               
+                       </h:panelGrid>
+                        </p:panel>
+                        </div>
+                 </h:form>
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
